@@ -1,0 +1,435 @@
+.service-card p {
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合同会社未来商店 | Coding the Future Protocol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff0080;
+            --neon-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #000000;
+            --text-gray: #b0b0b0;
+        }
+        
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background: var(--darker-bg);
+            color: var(--text-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Grid Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background: linear-gradient(90deg, transparent 98%, var(--neon-cyan) 100%),
+                        linear-gradient(180deg, transparent 98%, var(--neon-cyan) 100%);
+            background-size: 50px 50px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-cyan);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            background: var(--neon-cyan);
+            color: var(--darker-bg);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--neon-cyan);
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-content h3 {
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .company-info {
+            background: rgba(0, 255, 255, 0.05);
+            padding: 2rem;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+        }
+        
+        .company-info h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        /* Services Section */
+        .services {
+            background: var(--dark-bg);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(0, 255, 255, 0.05);
+            padding: 2rem;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .service-card h3 {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .service-card li:before {
+            content: '> ';
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+        }
+        
+        .contact-info {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .contact-info h4 {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--neon-cyan);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">未来商店</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Coding the Future Protocol</h1>
+            <p>Crypto Mining, Digital Assets, and Tomorrow's Infrastructure</p>
+            <a href="#services" class="cta-button">Explore Services</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About</h2>
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>ミッション</h3>
+                <p>未来を見据えた革新的なプロダクトとサービスの提供を通じて、社会に貢献します。私たちは、持続可能で革新的なソリューションを創造し、人々の体験を向上させ、ポジティブな変化を促進することを目指しています。</p>
+                
+                <h3>ビジョン</h3>
+                <p>これからの世界を考え、新しい価値を創造する。テクノロジーの進化の最前線に立ち、先進技術が日常生活とシームレスに統合される未来を創り出し、人間の可能性を高め、次世代のための新たな可能性を生み出します。</p>
+            </div>
+            
+            <div class="company-info">
+                <h4>Company Info</h4>
+                <p><strong>社名:</strong> 合同会社未来商店</p>
+                <p><strong>設立:</strong> 令和2年12月25日</p>
+                <p><strong>所在地:</strong> 大阪府八尾市太田新町一丁目120</p>
+                <p><strong>法人番号:</strong> 1200-03-018666</p>
+                <p><strong>公告方法:</strong> 官報に掲載する方法により行う</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Crypto & Blockchain</h3>
+                <p>暗号資産の研究・マイニング・運用を通じて、デジタル取引と分散型アプリケーションを再定義するブロックチェーンソリューションを提供します。</p>
+                <ul>
+                    <li>暗号資産の研究・マイニング・運用</li>
+                    <li>社内通貨・社内クリプトの設計・コンサルティング</li>
+                    <li>ブロックチェーン技術コンサルティング</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>Future Lifestyle</h3>
+                <p>スマートテクノロジーの統合と先見的なデザインを通じて、日常生活を向上させる革新的なソリューションを創造します。</p>
+                <ul>
+                    <li>デュアルライフモデルの提供</li>
+                    <li>メタバース移住支援</li>
+                    <li>新しいライフスタイル提案・導入支援</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>Next Generation Pets</h3>
+                <p>人間と動物の絆を深める最先端のペットケア技術とサービスを開発します。</p>
+                <ul>
+                    <li>マイクロブタのペット育成・マーケティング</li>
+                    <li>未来の動物との関わり方提案</li>
+                    <li>食育提案</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>Consulting & Management</h3>
+                <p>デジタル時代の複雑さをナビゲートするための専門的なガイダンスと戦略的な管理サービスを提供します。</p>
+                <ul>
+                    <li>経営コンサルティング</li>
+                    <li>不動産の賃貸・所有・管理</li>
+                    <li>マイニング機械の製造・販売・輸入</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-content">
+            <p>事業に関するお問い合わせ、ご相談はお気軽にご連絡ください。</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXP62lZgBBthjIsO4P7d_E8Zk1-yhwYbJZWfv8HOiV5IyqdA/viewform" 
+               target="_blank" 
+               class="cta-button">
+               お問い合わせはこちらから
+            </a>
+            
+            <div class="contact-info">
+                <h4>会社情報</h4>
+                <p><strong>合同会社未来商店</strong></p>
+                <p>〒581-0085<br>大阪府八尾市太田新町一丁目120</p>
+                <p>法人番号：1200-03-018666</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 合同会社未来商店. All rights reserved. | Coding the Future Protocol</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission (placeholder - now using Google Forms)
+        // Google Forms handles submission automatically
+    </script>
+</body>
+</html>
