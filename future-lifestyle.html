@@ -160,8 +160,12 @@
             order: 2;
         }
         
-        .service-item:nth-child(even) .service-icon {
+        .service-item:nth-child(even) .service-spacer {
             order: 1;
+        }
+        
+        .service-spacer {
+            /* 完全に空白のスペース */
         }
         
         .service-content h3 {
@@ -424,12 +428,8 @@
                 text-align: center;
             }
             
-            .service-item:nth-child(even) .service-content {
-                order: 1;
-            }
-            
-            .service-item:nth-child(even) .service-icon {
-                order: 2;
+            .service-item .service-spacer {
+                display: none;
             }
             
             .pricing-grid {
@@ -485,8 +485,7 @@
                             <li>デュアルライフに適した住環境と職場環境のデザイン</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        🏡
+                    <div class="service-spacer">
                     </div>
                 </div>
 
@@ -501,26 +500,10 @@
                             <li>仮想空間でのビジネスモデル構築とマネタイズ戦略</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        🥽
+                    <div class="service-spacer">
                     </div>
                 </div>
-
-                <div class="service-item">
-                    <div class="service-content">
-                        <h3>新しいライフスタイル提案・導入支援</h3>
-                        <p>テクノロジーの進化に合わせた新しい生活様式を提案し、その実現をサポートします。スマートホーム技術の導入から、持続可能な消費習慣の確立まで、未来志向のライフスタイルへの移行をガイドします。</p>
-                        <ul>
-                            <li>最新テクノロジーを活用したスマートライフの設計</li>
-                            <li>持続可能で環境に配慮したライフスタイルへの移行支援</li>
-                            <li>デジタルデトックスと技術との健全な関係構築</li>
-                            <li>未来型コミュニティ形成と新しい社会関係の構築</li>
-                        </ul>
-                    </div>
-                    <div class="service-icon">
-                        💡
-                    </div>
-                </div>
+                
             </section>
 
             <!-- Research Section -->
@@ -543,7 +526,7 @@
                     
                     <div class="research-card">
                         <h4>食育・持続可能な食文化研究</h4>
-                        <p>未来の食のあり方を考える食育プログラムと、持続可能な食肉生産・消費に関する研究を行っています。</p>
+                        <p>未来の食のあり方を考える食育プログラムと、持続可能な食肉生産・消費に関する研究を予定しています。</p>
                         <ul style="list-style: none; padding: 0; margin-top: 1rem;">
                             <li style="padding: 0.3rem 0; border-bottom: 1px solid rgba(255, 0, 128, 0.1);">• 代替タンパク質の研究</li>
                             <li style="padding: 0.3rem 0; border-bottom: 1px solid rgba(255, 0, 128, 0.1);">• 食育ワークショップ開発</li>
@@ -560,13 +543,12 @@
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <h3>導入段階</h3>
-                        <div class="price">80万円〜</div>
+                        <div class="price">10万円〜</div>
                         <p>新しいライフスタイルを体験してみたい方向け</p>
                         <ul>
-                            <li>メタバース移住コンサルティング（80万円）</li>
-                            <li>VR環境設計・構築支援（100万円）</li>
-                            <li>デュアルライフ体験プログラム（120万円）</li>
-                            <li>スマートライフ設計（150万円）</li>
+                            <li>メタバース移住コンサルティング（10万円）</li>
+                            <li>VR環境設計・構築支援（30万円）</li>
+                            <li>デュアルライフ体験プログラム（50万円）</li>
                             <li>基礎サポート（月額10万円×6ヶ月）</li>
                         </ul>
                     </div>
@@ -578,7 +560,6 @@
                         <ul>
                             <li>タイ・バンコク移住支援（200万円〜）</li>
                             <li>国際デュアルライフ設計（300万円〜）</li>
-                            <li>バーチャル・リアル統合生活設計（500万円〜）</li>
                             <li>メタバース事業展開支援（800万円〜）</li>
                             <li>継続ライフコーチング（月額25万円〜）</li>
                         </ul>
