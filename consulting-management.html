@@ -160,8 +160,12 @@
             order: 2;
         }
         
-        .service-item:nth-child(even) .service-icon {
+        .service-item:nth-child(even) .service-spacer {
             order: 1;
+        }
+        
+        .service-spacer {
+            /* 完全に空白のスペース */
         }
         
         .service-content h3 {
@@ -387,12 +391,8 @@
                 text-align: center;
             }
             
-            .service-item:nth-child(even) .service-content {
-                order: 1;
-            }
-            
-            .service-item:nth-child(even) .service-icon {
-                order: 2;
+            .service-item .service-spacer {
+                display: none;
             }
             
             .pricing-grid {
@@ -425,7 +425,7 @@
             <!-- Hero Section -->
             <section class="hero">
                 <h1>Consulting & Management</h1>
-                <p>デジタル時代の複雑さをナビゲートするための専門的なガイダンスと戦略的な管理サービス。昭和企業から未来企業への変革をトータルサポートします。</p>
+                <p>デジタル時代の複雑さをナビゲートするための専門的なガイダンスと戦略的な管理サービス。「未来」を見据えた企業への変革をトータルサポートします。</p>
                 <div class="divider"></div>
             </section>
 
@@ -444,24 +444,21 @@
                             <li>財務分析と投資戦略のアドバイス</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        📈
+                    <div class="service-spacer">
                     </div>
                 </div>
 
                 <div class="service-item">
                     <div class="service-content">
                         <h3>デジタルトランスフォーメーション支援</h3>
-                        <p>昭和企業が未来企業に生まれ変わるための包括的なDX支援を提供します。業務プロセスの見直しから最新ITツールの導入まで、段階的なデジタル化を通じて競争力を向上させます。</p>
+                        <p>未来思考企業に生まれ変わるための包括的なDX支援を提供します。業務プロセスの見直しからAI導入まで、伴走支援を通じて競争力を向上させます。</p>
                         <ul>
                             <li>現状業務の分析とデジタル化可能領域の特定</li>
-                            <li>ITツール選定と導入支援</li>
-                            <li>従業員向けデジタルスキル研修</li>
+                            <li>生成AI導入支援、研修</li>
                             <li>リモートワーク環境の構築と運用支援</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        🔄
+                    <div class="service-spacer">
                     </div>
                 </div>
 
@@ -476,26 +473,10 @@
                             <li>多様な働き方に対応した制度設計</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        👥
+                    <div class="service-spacer">
                     </div>
                 </div>
 
-                <div class="service-item">
-                    <div class="service-content">
-                        <h3>マイニングサービス・運用支援</h3>
-                        <p>暗号資産マイニング事業の運用をトータルサポートします。技術面から運営面まで、効率的で持続可能なマイニング事業の実現をお手伝いします。</p>
-                        <ul>
-                            <li>マイニング機器の選定と調達支援</li>
-                            <li>マイニング施設の運用管理</li>
-                            <li>電力効率の最適化とコスト削減</li>
-                            <li>マイニング収益の分析と改善提案</li>
-                        </ul>
-                    </div>
-                    <div class="service-icon">
-                        ⚙️
-                    </div>
-                </div>
             </section>
 
             <!-- Pricing Plans Section -->
