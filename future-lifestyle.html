@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Lifestyle | 合同会社未来商店</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --neon-cyan: #00ffff;
+            --neon-pink: #ff0080;
+            --neon-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #000000;
+            --text-gray: #b0b0b0;
+        }
+        
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background: var(--darker-bg);
+            color: var(--text-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Grid Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background: linear-gradient(90deg, transparent 98%, var(--neon-cyan) 100%),
+                        linear-gradient(180deg, transparent 98%, var(--neon-cyan) 100%);
+            background-size: 50px 50px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neon-cyan);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 2rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-gray);
+        }
+        
+        .divider {
+            width: 24px;
+            height: 1px;
+            background: var(--neon-cyan);
+            margin: 0 auto;
+        }
+        
+        /* Services Detail Section */
+        .services-detail {
+            margin: 4rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--neon-cyan);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 4rem 0;
+        }
+        
+        .service-item:nth-child(even) .service-content {
+            order: 2;
+        }
+        
+        .service-item:nth-child(even) .service-icon {
+            order: 1;
+        }
+        
+        .service-content h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+        }
+        
+        .service-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-content li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .service-content li:before {
+            content: '✓ ';
+            color: var(--neon-cyan);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .service-icon {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 3rem;
+            background: rgba(0, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--neon-cyan);
+        }
+        
+        /* Research Section */
+        .research-section {
+            margin: 6rem 0;
+            padding: 3rem;
+            background: rgba(255, 0, 128, 0.05);
+            border: 1px solid var(--neon-pink);
+            border-radius: 10px;
+        }
+        
+        .research-section h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--neon-pink);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .research-card {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        
+        .research-card h4 {
+            color: var(--neon-pink);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+        }
+        
+        /* Pricing Plans Section */
+        .pricing-section {
+            margin: 6rem 0;
+            padding: 3rem 0;
+            background: rgba(0, 255, 255, 0.02);
+            border-top: 1px solid var(--neon-cyan);
+            border-bottom: 1px solid var(--neon-cyan);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .pricing-card.premium {
+            border-color: var(--neon-green);
+            background: rgba(0, 255, 65, 0.05);
+        }
+        
+        .pricing-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-card.premium h3 {
+            color: var(--neon-green);
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-card.premium .price {
+            color: var(--neon-green);
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-card li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .pricing-card li:before {
+            content: '▶ ';
+            color: var(--neon-cyan);
+            font-weight: bold;
+        }
+        
+        .pricing-card.premium li:before {
+            color: var(--neon-green);
+        }
+        
+        /* Next Steps Section */
+        .next-steps {
+            margin: 6rem 0;
+            padding: 3rem;
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid var(--neon-green);
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .next-steps h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--neon-green);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .next-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .next-step-card {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .next-step-card:hover {
+            border-color: var(--neon-green);
+            transform: translateY(-5px);
+        }
+        
+        .next-step-card h4 {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            margin: 1rem;
+        }
+        
+        .cta-button:hover {
+            background: var(--neon-cyan);
+            color: var(--darker-bg);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+        
+        .cta-button.secondary {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--neon-green);
+            color: var(--darker-bg);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--neon-cyan);
+            margin-top: 4rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .service-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .service-item:nth-child(even) .service-content {
+                order: 1;
+            }
+            
+            .service-item:nth-child(even) .service-icon {
+                order: 2;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .next-steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    
+    <header>
+        <nav>
+            <a href="/" class="logo">未来商店</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Future Lifestyle</h1>
+                <p>テクノロジーと人間性が融合する新しい生活様式を提案。デュアルライフ、メタバース移住から次世代ペット研究まで、未来のライフスタイルを今日から実現します。</p>
+                <div class="divider"></div>
+            </section>
+
+            <!-- Services Detail Section -->
+            <section class="services-detail">
+                <h2 class="section-title">サービス詳細</h2>
+                
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>デュアルライフモデルの提供</h3>
+                        <p>物理的な生活と仮想空間での生活を調和させる「デュアルライフ」の実現をサポートします。リモートワークとデジタルノマドの概念を発展させ、場所に縛られない新しい働き方と暮らし方を提案します。</p>
+                        <ul>
+                            <li>物理空間と仮想空間を行き来するライフスタイルの設計</li>
+                            <li>デジタルノマドとしての働き方と生活基盤の構築支援</li>
+                            <li>複数拠点生活のためのインフラとテクノロジー導入</li>
+                            <li>デュアルライフに適した住環境と職場環境のデザイン</li>
+                        </ul>
+                    </div>
+                    <div class="service-icon">
+                        🏡
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>メタバース移住支援</h3>
+                        <p>仮想空間での活動と存在感を確立するための包括的なサポートを提供します。メタバースでの土地取得、アバター作成、コミュニティ参加から、仮想空間でのビジネス展開まで、デジタル世界への「移住」をトータルサポートします。</p>
+                        <ul>
+                            <li>主要メタバースプラットフォームでの資産取得アドバイス</li>
+                            <li>個人・企業向けカスタムアバターとデジタルアイデンティティの構築</li>
+                            <li>メタバース内でのイベント企画とコミュニティ形成支援</li>
+                            <li>仮想空間でのビジネスモデル構築とマネタイズ戦略</li>
+                        </ul>
+                    </div>
+                    <div class="service-icon">
+                        🥽
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <h3>新しいライフスタイル提案・導入支援</h3>
+                        <p>テクノロジーの進化に合わせた新しい生活様式を提案し、その実現をサポートします。スマートホーム技術の導入から、持続可能な消費習慣の確立まで、未来志向のライフスタイルへの移行をガイドします。</p>
+                        <ul>
+                            <li>最新テクノロジーを活用したスマートライフの設計</li>
+                            <li>持続可能で環境に配慮したライフスタイルへの移行支援</li>
+                            <li>デジタルデトックスと技術との健全な関係構築</li>
+                            <li>未来型コミュニティ形成と新しい社会関係の構築</li>
+                        </ul>
+                    </div>
+                    <div class="service-icon">
+                        💡
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Section -->
+            <section class="research-section">
+                <h3>研究開発分野</h3>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-gray);">
+                    まだ市場が形成されていない分野での実験的な取り組みを研究・開発しています
+                </p>
+                
+                <div class="research-grid">
+                    <div class="research-card">
+                        <h4>次世代ペット事業研究</h4>
+                        <p>マイクロブタのペット育成やAIを活用したペット行動分析など、人間と動物の新しい関係性を探求しています。</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                            <li style="padding: 0.3rem 0; border-bottom: 1px solid rgba(255, 0, 128, 0.1);">• マイクロブタの都市型飼育研究</li>
+                            <li style="padding: 0.3rem 0; border-bottom: 1px solid rgba(255, 0, 128, 0.1);">• AIペット行動分析システム</li>
+                            <li style="padding: 0.3rem 0;">• バーチャルペット共生システム</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-card">
+                        <h4>食育・持続可能な食文化研究</h4>
+                        <p>未来の食のあり方を考える食育プログラムと、持続可能な食肉生産・消費に関する研究を行っています。</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                            <li style="padding: 0.3rem 0; border-bottom: 1px solid rgba(255, 0, 128, 0.1);">• 代替タンパク質の研究</li>
+                            <li style="padding: 0.3rem 0; border-bottom: 1px solid rgba(255, 0, 128, 0.1);">• 食育ワークショップ開発</li>
+                            <li style="padding: 0.3rem 0;">• 持続可能なペットフード研究</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Plans Section -->
+            <section class="pricing-section">
+                <h2 class="section-title">段階別料金プラン</h2>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>導入段階</h3>
+                        <div class="price">80万円〜</div>
+                        <p>新しいライフスタイルを体験してみたい方向け</p>
+                        <ul>
+                            <li>メタバース移住コンサルティング（80万円）</li>
+                            <li>VR環境設計・構築支援（100万円）</li>
+                            <li>デュアルライフ体験プログラム（120万円）</li>
+                            <li>スマートライフ設計（150万円）</li>
+                            <li>基礎サポート（月額10万円×6ヶ月）</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card premium">
+                        <h3>本格移住</h3>
+                        <div class="price">200万円〜</div>
+                        <p>完全な未来ライフスタイルを実現したい方向け</p>
+                        <ul>
+                            <li>タイ・バンコク移住支援（200万円〜）</li>
+                            <li>国際デュアルライフ設計（300万円〜）</li>
+                            <li>バーチャル・リアル統合生活設計（500万円〜）</li>
+                            <li>メタバース事業展開支援（800万円〜）</li>
+                            <li>継続ライフコーチング（月額25万円〜）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 0, 128, 0.05); border: 1px solid var(--neon-pink); border-radius: 8px;">
+                    <h4 style="color: var(--neon-pink); font-family: 'Orbitron', monospace; margin-bottom: 1rem;">研究分野のサービス</h4>
+                    <p style="color: var(--text-gray); margin-bottom: 1rem;">次世代ペット事業・食育研究は実験段階のため、ご相談ベースでの対応となります</p>
+                    <p style="color: var(--neon-pink);">料金：50万円〜（研究内容により変動）</p>
+                </div>
+            </section>
+
+            <!-- Next Steps Section -->
+            <section class="next-steps">
+                <h3>次のステップ</h3>
+                <p>新しいライフスタイルを手に入れたら、さらにビジネスでも革新を起こしませんか？</p>
+                
+                <div class="next-steps-grid">
+                    <div class="next-step-card">
+                        <h4>Crypto & Blockchain</h4>
+                        <p>デジタル資産を活用して、メタバースやデュアルライフでの経済活動を拡大</p>
+                    </div>
+                    
+                    <div class="next-step-card">
+                        <h4>Consulting & Management</h4>
+                        <p>新しいライフスタイルで得た知見を活かし、他の企業の変革をサポート</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace; margin-bottom: 2rem;">未来のライフスタイルを体験してみませんか？</h3>
+                <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                    デュアルライフやメタバース移住について、まずは無料相談（30分）でお話を聞かせてください。<br>
+                    あなたにぴったりの未来ライフスタイルをご提案します。
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXP62lZgBBthjIsO4P7d_E8Zk1-yhwYbJZWfv8HOiV5IyqdA/viewform" 
+                   target="_blank" class="cta-button">お問い合わせ</a>
+                <a href="/" class="cta-button secondary">トップページに戻る</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 合同会社未来商店. All rights reserved. | Coding the Future Protocol</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
