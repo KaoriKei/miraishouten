@@ -160,8 +160,12 @@
             order: 2;
         }
         
-        .service-item:nth-child(even) .service-icon {
+        .service-item:nth-child(even) .service-spacer {
             order: 1;
+        }
+        
+        .service-spacer {
+            /* 完全に空白のスペース */
         }
         
         .service-content h3 {
@@ -387,12 +391,8 @@
                 text-align: center;
             }
             
-            .service-item:nth-child(even) .service-content {
-                order: 1;
-            }
-            
-            .service-item:nth-child(even) .service-icon {
-                order: 2;
+            .service-item .service-spacer {
+                display: none;
             }
             
             .pricing-grid {
@@ -425,7 +425,7 @@
             <!-- Hero Section -->
             <section class="hero">
                 <h1>Crypto & Blockchain</h1>
-                <p>暗号資産の研究からブロックチェーン技術の実装まで、次世代のデジタル経済を構築するための包括的なソリューションを提供します</p>
+                <p>暗号資産の研究からブロックチェーンの社内導入まで。包括的なソリューションを提供します</p>
                 <div class="divider"></div>
             </section>
 
@@ -436,50 +436,31 @@
                 <div class="service-item">
                     <div class="service-content">
                         <h3>暗号資産の研究・マイニング・運用</h3>
-                        <p>最新の暗号資産技術を研究し、効率的なマイニング戦略と持続可能な運用方法を開発しています。エネルギー効率の高いマイニングソリューションから、リスク管理を考慮した資産運用まで、包括的なサービスを提供します。</p>
+                        <p>効率的なマイニング戦略と持続可能な運用方法を研究しています。初めての暗号資産購入からリスク管理を考慮した資産運用まで、包括的なサービスを提供します。</p>
                         <ul>
-                            <li>最新のマイニングハードウェアとソフトウェアの導入支援</li>
-                            <li>エネルギー効率を最適化したマイニング施設の設計</li>
+                            <li>マイニングハードウェアとソフトウェアの導入支援</li>
                             <li>暗号資産ポートフォリオの構築と管理戦略</li>
                             <li>マイニングプールの最適化と収益性分析</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        🪙
+                    <div class="service-spacer">
                     </div>
                 </div>
 
                 <div class="service-item">
                     <div class="service-content">
                         <h3>社内通貨・社内クリプトの設計・コンサルティング</h3>
-                        <p>企業独自のトークンエコノミーを構築し、社内インセンティブシステムや顧客ロイヤルティプログラムを革新します。ブロックチェーン技術を活用した透明性の高い社内通貨システムの設計から実装までをサポートします。</p>
+                        <p>企業独自のトークンエコノミーを構築し、社内インセンティブシステムや顧客ロイヤルティプログラムを設計します。ブロックチェーン技術を活用した透明性の高いシステム実装をサポートします。</p>
                         <ul>
                             <li>カスタムトークンの設計と発行メカニズム構築</li>
                             <li>社内インセンティブシステムの設計と実装</li>
                             <li>顧客ロイヤルティプログラムのトークン化</li>
-                            <li>規制に準拠したトークンエコノミーの構築</li>
                         </ul>
                     </div>
-                    <div class="service-icon">
-                        ⚡
+                    <div class="service-spacer">
                     </div>
                 </div>
 
-                <div class="service-item">
-                    <div class="service-content">
-                        <h3>ブロックチェーン技術コンサルティング</h3>
-                        <p>ビジネスプロセスを変革するブロックチェーン技術の導入をサポートします。スマートコントラクトの開発からプライベートブロックチェーンの構築まで、企業のニーズに合わせた最適なソリューションを提案します。</p>
-                        <ul>
-                            <li>ブロックチェーン導入のためのビジネス分析と戦略策定</li>
-                            <li>スマートコントラクトの設計と開発</li>
-                            <li>プライベート/コンソーシアムブロックチェーンの構築</li>
-                            <li>既存システムとブロックチェーンの統合ソリューション</li>
-                        </ul>
-                    </div>
-                    <div class="service-icon">
-                        💻
-                    </div>
-                </div>
             </section>
 
             <!-- Pricing Plans Section -->
